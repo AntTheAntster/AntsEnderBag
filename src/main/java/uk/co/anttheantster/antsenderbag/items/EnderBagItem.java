@@ -6,18 +6,17 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 
-import java.util.function.Consumer;
+import java.util.List;
 
 public class EnderBagItem extends Item {
 
@@ -25,25 +24,23 @@ public class EnderBagItem extends Item {
         super(new Item.Properties()
                 .stacksTo(1)
                 .rarity(Rarity.EPIC)
-                .fireResistant()
-                .equippable(EquipmentSlot.BODY)
-                .setId(ResourceKey.create(Registries.ITEM,
-                        ResourceLocation.fromNamespaceAndPath("antsenderbag", "ender_bag"))));
+                .fireResistant());
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> tooltips, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltips, TooltipFlag tooltipFlag) {
 
-        tooltips.accept(Component.translatable("item.antsenderbag.tooltip"));
+        tooltips.add(Component.translatable("item.antsenderbag.tooltip"));
 
-        super.appendHoverText(stack, context, tooltipDisplay, tooltips, tooltipFlag);
+        super.appendHoverText(stack, context, tooltips, tooltipFlag);
     }
 
     @Override
-    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
 
         openEchest(level, player);
-        return InteractionResult.CONSUME;
+
+        return InteractionResultHolder.success(player.getItemInHand(usedHand));
     }
 
     public static void openEchest(Level level, Player player) {

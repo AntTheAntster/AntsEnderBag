@@ -12,8 +12,7 @@ public class EnderCoreItem extends Item {
     public EnderCoreItem() {
         super(new Item.Properties()
                 .fireResistant()
-                .rarity(Rarity.EPIC)
-                .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(AntsEnderBag.MODID, "ender_core"))));
+                .rarity(Rarity.EPIC));
     }
 
 }
