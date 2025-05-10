@@ -10,6 +10,9 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import uk.co.anttheantster.antsenderbag.client.KeybindsHandler;
+import uk.co.anttheantster.antsenderbag.items.ModItems;
+import uk.co.anttheantster.antsenderbag.utils.ModCreativeTab;
 
 @Mod(AntsEnderBag.MODID)
 public class AntsEnderBag {
@@ -18,6 +21,11 @@ public class AntsEnderBag {
 
         modEventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);
+
+        ModItems.register(modEventBus);
+        ModCreativeTab.register(modEventBus);
+
+        NeoForge.EVENT_BUS.register(new KeybindsHandler());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

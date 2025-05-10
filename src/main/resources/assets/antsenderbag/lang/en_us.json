@@ -1,0 +1,10 @@
+{
+  "creativetab.antsenderbag.tabname": "Ant's Ender Bag",
+
+  "item.antsenderbag.ender_bag": "Ender Bag",
+  "item.antsenderbag.ender_core": "Ender Core",
+
+  "item.antsenderbag.tooltip": "Open an Ender Chest on the go! Right-Click or configure a keybind!",
+
+  "key.antsenderbag.use": "Open Ender Bag"
+}

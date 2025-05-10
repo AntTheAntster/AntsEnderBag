@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "misc",
+  "key": {
+    "C": "antsenderbag:ender_core",
+    "L": "minecraft:leather",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    "SLS",
+    "LCL",
+    "LLL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "antsenderbag:ender_bag"
+  }
+}
